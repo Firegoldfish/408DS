@@ -1,5 +1,20 @@
 #include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<queue>
+#include<stack>
 using namespace std;
+
+typedef struct LinkQueue
+{
+    QueuePtr front, rear;
+}LinkQueue;
+
+typedef struct QNode
+{
+    BiTree data;
+    struct QNode *next;
+}QNode, *QueuePtr;
 
 typedef struct BiTNode //链式存储二叉树
 {
@@ -26,6 +41,21 @@ void visit(BiTree T){
     cout<<T->data<<endl;
 }
 
+void InitQueue(LinkQueue &Q){
+    Q.front=Q.rear=(QueuePtr)malloc(sizeof(QNode));
+    if (!Q.front) exit(OVERFLOW);
+    Q.front->next=NULL;
+}
+
+void EnQueue(LinkQueue &Q,BiTree T){
+    QueuePtr p=(QueuePtr)malloc(sizeof(QNode));
+    if (!p) exit(OVERFLOW);
+    p->data=T;
+    p->next=NULL;
+    Q.rear->next=p;
+    Q.rear=p;
+}
+
 void PreOrder(BiTree T){ //前序遍历
     if (T!=NULL)
     {
@@ -50,5 +80,23 @@ void PostOrder(BiTree T){ //后序遍历
         PostOrder(T->rchild);
         visit(T);
     }
-    
+}
+
+void LevelOrder(BiTree T){ //层次遍历
+    InitQueue(Q);
+    BiTree p;
+    EnQueue(Q,T);
+    while (!IsEmpty(Q))
+    {
+        DeQueue(Q,p);
+        visit(p);
+        if (p->lchild!=NULL)
+        {
+            EnQueue(Q,p->lchild);
+        }
+        if (p->rchild!=NULL)
+        {
+            EnQueue(Q,p->rchild);
+        }
+    }
 }
