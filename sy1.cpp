@@ -13,7 +13,7 @@ inline void dequeue(int*i, int*j)
 { 
     top--;
     *i =queue[top][0];
-    *j=queue[top][1];
+    *j =queue[top][1];
 } 
 
 int main()
