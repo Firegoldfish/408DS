@@ -27,6 +27,13 @@ typedef struct SqTree //顺序存储二叉树
     char data[100];
 }SqTree;
 
+typedef struct CSNode //孩子兄弟表示法
+{
+    int data;
+    struct CSNode *firstchild, *nextsibling;
+}CSNode, *CSTree;
+
+
 int GetTogetherFather(SqTree T,int i, int j){
     if (T[i]!='#'&&T[j]!='#') {
         while (i!=j){
@@ -100,3 +107,4 @@ void LevelOrder(BiTree T){ //层次遍历
         }
     }
 }
+void 
