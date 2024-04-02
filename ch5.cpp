@@ -16,6 +16,11 @@ typedef struct QNode
     struct QNode *next;
 }QNode, *QueuePtr;
 
+typedef struct TreeNode{ //普通树
+    int data;
+    struct TreeNode *firstchild, *nextsibling;
+}   TreeNode, *Tree;
+
 typedef struct BiTNode //链式存储二叉树
 {
     int data;
@@ -107,4 +112,3 @@ void LevelOrder(BiTree T){ //层次遍历
         }
     }
 }
-void 
