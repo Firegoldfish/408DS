@@ -142,7 +142,7 @@ Linklist HeadInsert(Linklist &L){
     cin>>x;
     while (x!=9999)
     {
-        s=(LNode*)malloc(sizeof(LNode))
+        s=(LNode*)malloc(sizeof(LNode));
         s->next=x;
         s->next=L->next;
         L->next=s;
