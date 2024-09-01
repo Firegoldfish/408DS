@@ -270,14 +270,15 @@ int DeQueue(Queue &Q, int &x){
 //逆置队列进入栈
 
 void Inverser(SqStack &S, Queue &Q){
+    char x;
     while (!IfQueueEmpty(Q))
     {
-        x=DeQueue(Q);
+        x=DeQueue(Q,x);  //????
         Push(S,x);
     }
     while (!IfStackEmpty(S))
     {
-        Pop(S,x);
+        Pop(S);
         EnQueue(Q,x);
     }
     
